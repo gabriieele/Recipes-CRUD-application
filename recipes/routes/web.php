@@ -16,17 +16,17 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/recipes',[RecipeController::class, 'index']);
+Route::post('/recipes/new', [RecipeController::class, 'saveNew']);
+Route::get('/recipes/edit/{id}', [RecipeController::class, 'editForm']);
+Route::post('/recipes/edit/{id}', [RecipeController::class, 'saveEdit']);
+Route::get('/recipes/delete/{id}', [RecipeController::class, 'delete']);
 // Route::get('/songs/2', [SongController::class, 'singleSong']);
 // Route::get('/songs/where', [SongController::class, 'where']);
 // Route::get('/songs/or-where', [SongController::class, 'orWhere']);
 // Route::get('/songs/and-where', [SongController::class, 'andWhere']);
 // Route::get('/songs/new', [SongController::class, 'newForm']);
-// Route::post('/songs/new', [SongController::class, 'saveNew']);
-// Route::get('/songs/edit/{id}', [SongController::class, 'editForm']);
-// Route::post('/songs/edit/{id}', [SongController::class, 'saveEdit']);
-// Route::get('/songs/delete/{id}', [SongController::class, 'delete']);
