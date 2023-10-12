@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller
 {
     public function index(){
-        echo '<pre>';
+       
         //visi receptai
         foreach(Recipe::all() as $data){
+            echo '<pre>';
             echo $data->title;
+       
         }
     }
 
