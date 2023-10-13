@@ -20,7 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home',[HomeController::class, 'index']);
 Route::get('/recipes',[RecipeController::class, 'index']);
+Route::get('/categories',[CategoryController::class, 'index']);
 Route::post('/recipes/new', [RecipeController::class, 'saveNew']);
 Route::get('/recipes/edit/{id}', [RecipeController::class, 'editForm']);
 Route::post('/recipes/edit/{id}', [RecipeController::class, 'saveEdit']);

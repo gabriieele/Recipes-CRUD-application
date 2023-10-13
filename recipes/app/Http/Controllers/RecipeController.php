@@ -13,7 +13,6 @@ class RecipeController extends Controller
         foreach(Recipe::all() as $data){
             echo '<pre>';
             echo $data->title;
-       
         }
     }
 
