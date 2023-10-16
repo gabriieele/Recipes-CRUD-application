@@ -19,22 +19,14 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
+            <div class=" container nav-cont justify-content-center">
+                <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+                <form class="d-flex input-group search" role="search">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+    </form>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav py-3">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -68,11 +60,11 @@
                             </li>
                         @endguest
                     </ul>
-                </div>
+                <!-- </div> -->
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

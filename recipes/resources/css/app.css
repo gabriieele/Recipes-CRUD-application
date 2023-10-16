@@ -1,0 +1,41 @@
+@import "~bootstrap";
+
+.search input,
+.search-btn {
+    border-radius: 80px;
+}
+.search {
+    width: 500px;
+}
+
+.search-btn {
+    background-color: white;
+    border: 1px solid #dee2e6;
+}
+
+.nav-cont {
+    gap: 50px;
+}
+
+.section1 {
+    padding: 200px 0;
+    background: url("food.jpg") no-repeat center/cover;
+}
+
+.section2 {
+    padding: 100px 0;
+    background-color: #f8f9fa;
+}
+
+.card {
+    height: 200px;
+    width: 200px;
+    margin-right: 10px;
+    background-color: #dfd1bf;
+    border: 1px solid #dee2e6;
+}
+
+.fa,
+.fas {
+    font-size: 35px;
+}
