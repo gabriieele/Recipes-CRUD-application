@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-
     <title>Document</title>
 
     <style>
@@ -29,11 +27,12 @@ width: 500px;
 }
 
 .section1{
-    height: 400px;
+    padding: 200px 0;
     background: url('food.jpg') no-repeat center/cover;
 }
+
 .section2{
-    height: 400px;
+    padding: 100px 0;
     background-color: #f8f9fa;
 }
 
@@ -92,7 +91,7 @@ width: 500px;
                     @foreach($data as $category)
                         <a href='/recipes'>
                             <div class="card d-flex justify-content-center align-items-center">
-                                <i class="fas fa-fw {{ getCategoryIcon($category['name']) }} mb-3"></i> {{$category['name']}}
+                                <i class="fas {{ getCategoryIcon($category['name']) }} mb-3"></i> {{$category['name']}}
                             </div>
                         </a>
                     @endforeach
@@ -113,10 +112,26 @@ function getCategoryIcon($categoryName) {
             return 'fa-leaf';
         case 'Breakfast meals':
             return 'fa-bread-slice';
+        case 'Main courses':
+            return 'fa-drumstick-bite';
+        case 'Salads':
+            return 'fa-carrot';
+        case 'Soups':
+            return 'fa-bowl-rice';
+        case 'Desserts':
+            return 'fa-ice-cream';
+        case 'Seafood':
+            return 'fa-shrimp';
+        case 'Appetizers and snacks':
+            return 'fa-pizza-slice';
+        case 'Drinks':
+            return 'fa-martini-glass';
         default:
             return 'fa-default-icon-class';
     }
 }
-?>
+?>    
+<script src="https://kit.fontawesome.com/33ae1132d9.js" crossorigin="anonymous"></script>
 </body>
 </html>
+
