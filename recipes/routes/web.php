@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth; // Add this use statement
+use Illuminate\Support\Facades\Auth; //auth:routes kad veiktu
 // use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -17,11 +17,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/recipes',[RecipeController::class, 'index']);
+
+// Route::get('/recipes',[RecipeController::class, 'index']);
 Route::get('/categories',[CategoryController::class, 'index']);
 Route::post('/recipes/new', [RecipeController::class, 'saveNew']);
 Route::get('/recipes/edit/{id}', [RecipeController::class, 'editForm']);
@@ -30,4 +31,7 @@ Route::get('/recipes/delete/{id}', [RecipeController::class, 'delete']);
 
 Auth::routes(); 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index']);
+
+//(kelias, kelias iki funkcijos)
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

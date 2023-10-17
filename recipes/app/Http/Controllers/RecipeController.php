@@ -7,15 +7,13 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function index(){
-       
-        //visi receptai
-        foreach(Recipe::all() as $data){
-            echo '<pre>';
-            echo $data->title;
-        }
-    }
 
+    public function index()
+    {
+        $data = Recipe::all();
+
+        return view('home', ['data' => $data]);
+    }
     public function saveNew(Request $request) {
      
         $song = Recipe::create($request->all());

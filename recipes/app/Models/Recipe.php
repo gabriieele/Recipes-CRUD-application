@@ -21,4 +21,14 @@ class Recipe extends Model
 {
     return explode(',', $this->ingredients);
 }
+
+public function comments()
+{
+    return $this->hasMany(Comment::class);
+}
+
+public function ratings()
+{
+    return $this->hasMany(Rating::class);
+}
 }

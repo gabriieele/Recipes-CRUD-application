@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Recipe;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +12,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
+     //uzkomentuota, kad nedirectintu neprisijungusiu vartotoju i logina
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,8 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = \App\Models\Category::all();
+        $categories = Category::all();
+        $recipes = Recipe::all();
 
-        return view('home', ['data' => $data]);
+        return view('home', [
+            'categories' => $categories,
+            'recipes' => $recipes
+
+    ]);
     }
+
+    
 }

@@ -18,10 +18,11 @@
 </head>
 <body>
     <div id="app">
+        <header>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class=" container nav-cont justify-content-center">
                 <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-                <form class="d-flex input-group search" role="search">
+                <form class="d-flex input-group search m-0" role="search">
       <input class="form-control" type="search" placeholder="Search" aria-label="Search">
       <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
     </form>
@@ -45,8 +46,8 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                @if (auth()->check())
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -58,12 +59,19 @@
                                     </form>
                                 </div>
                             </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Upload a recipe</a>
+                                </li>
+                                @endif
+                          
                         @endguest
                     </ul>
                 <!-- </div> -->
             </div>
         </nav>
-
+</header>
         <main>
             @yield('content')
         </main>
