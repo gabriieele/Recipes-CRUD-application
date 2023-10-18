@@ -14,29 +14,19 @@ class RecipeController extends Controller
 
         return view('home', ['data' => $data]);
     }
-    public function saveNew(Request $request) {
-     
-        $song = Recipe::create($request->all());
-    }
+   
 
-    public function editForm(int $id) {
-        return view('form');
-    }
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $data = Recipe::where('ingredients', 'like', '%' . $search . '%')
+        ->Orwhere('title', 'like', '%' . $search . '%')
+        ->get();
 
-    public function saveEdit (
-        int $id, 
-        Request $request
-    ) {
-
-        //Mass Update 
-        try {
-            Recipe::find($id)->update($request->all());
-        } catch(\Exception $e) {
-            //Atvaizduojama žinutė
-        }
+        return view('search.results', [
+            'data' => $data,
+            'keyword' => $search,
+        ]);
     }
-
-    public function delete(int $id) {
-        Recipe::find($id)->delete();
-    }
+    
 }

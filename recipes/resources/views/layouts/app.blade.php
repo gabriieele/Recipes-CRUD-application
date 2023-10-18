@@ -22,8 +22,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class=" container nav-cont justify-content-center">
                 <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-                <form class="d-flex input-group search m-0" role="search">
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex input-group search m-0" role="search" method="POST" action="{{ route('search') }}">
+                @csrf
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search" >
       <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
     </form>
                     <!-- Right Side Of Navbar -->
@@ -60,10 +61,13 @@
                                 </div>
                             </li>
 
-
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Upload a recipe</a>
+                                    <a class="nav-link" href="{{ route('uploadedRecipes') }}">My recipes</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('newRecipe') }}">Upload a recipe</a>
+                                </li>
+                                
                                 @endif
                           
                         @endguest

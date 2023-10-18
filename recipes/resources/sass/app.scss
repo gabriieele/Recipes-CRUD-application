@@ -12,9 +12,13 @@
 li {
     text-transform: none;
 }
-.search input,
+.search input {
+    border-top-left-radius: 80px !important;
+    border-bottom-left-radius: 80px !important;
+}
 .search-btn {
-    border-radius: 80px;
+    border-top-right-radius: 80px !important;
+    border-bottom-right-radius: 80px !important;
 }
 .search {
     width: 500px;
@@ -57,7 +61,7 @@ img {
 
 .recipeImg {
     height: 180px;
-    width: 180px;
+    width: 190px;
     padding: 10px;
     margin: 0;
 }
@@ -65,4 +69,10 @@ img {
 .fa,
 .fas {
     font-size: 35px;
+}
+
+.addNew input,
+.addNew select,
+.addNew textarea {
+    background-color: white;
 }
