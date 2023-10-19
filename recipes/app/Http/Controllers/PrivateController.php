@@ -14,29 +14,28 @@ class PrivateController extends Controller
  
     }
 
-    public function allRecipes() {
-        return view('uploadedRecipes');
- 
-    }
 
-
-    public function saveRecipe(Request $request) {
+ public function saveRecipe(Request $request) {
+    try {
         $validated = $request->validate([
             'title' => 'required|min:3|max:200', 
             'image' => 'required|max:10000|mimes:jpg,png',
             'ingredients' => 'required|min:3', 
             'description' => 'required|min:3', 
-          //tikrinama ar egzistuoja lenteleje categories id
             'category' => 'required|exists:categories,id',
         ]);
-    
+
         $validated['image'] = $request->file('image')->store('photos', 'public');
         $validated['category_id'] = $request->input('category');
         $validated['user_id'] = auth()->user()->id;
-    
+
         Recipe::create($validated);
-       
+
+        return redirect()->route('myRecipes')->with('success', 'Recipe uploaded successfully');
+    } catch (\Exception $e) {
+        return redirect()->route('newRecipe')->with('error', 'Failed to upload the recipe');
     }
+}
 
     public function editForm(int $id) {
         return view('form');
@@ -56,6 +55,14 @@ class PrivateController extends Controller
     }
 
     public function delete(int $id) {
-        Recipe::find($id)->delete();
+        try{
+            Recipe::find($id)->delete();
+        return redirect()->route('myRecipes')->with('success', 'Recipe deleted successfully');; 
+        }
+
+        catch (\Exception $e) {
+            return redirect()->route('myRecipes')->with('error', 'Failed to delete the recipe');
+        }
+       
     }
 }

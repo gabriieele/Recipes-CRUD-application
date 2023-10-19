@@ -5,7 +5,7 @@
                <div class="container">
         <div class="row ">
             <div class="col-12">
-                <h2 class="text-center">What are you cooking today?</h2>
+                <h1 class="text-center">What are you cooking today?</h1>
             </div>
         </div>
     </div>

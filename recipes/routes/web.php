@@ -19,31 +19,28 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+//
 
 
 // Route::get('/recipes',[RecipeController::class, 'index']);
-Route::get('/categories',[CategoryController::class, 'index']);
+// Route::get('/categories',[CategoryController::class, 'index']);
 
-
+//prisijungus
 Route::get('/recipes/new', [PrivateController::class, 'newRecipe'])->name('newRecipe');
 Route::post('/recipes/new', [PrivateController::class, 'saveRecipe'])->name('saveRecipe');
+Route::get('/myrecipes', [RecipeController::class, 'uploadedRecipes'])->name('myRecipes');
+Route::get('/myrecipes/delete/{id}', [PrivateController::class, 'delete'])->name('delete');
 
-
-Route::get('/recipes', [PrivateController::class, 'allRecipes'])->name('uploadedRecipes');
-
-
+//logout
+Route::get('logout', [LoginController::class, 'logout'])->name('home');
 // Route::get('/recipes/edit/{id}', [RecipeController::class, 'editForm']);
 // Route::post('/recipes/edit/{id}', [RecipeController::class, 'saveEdit']);
-// Route::get('/recipes/delete/{id}', [RecipeController::class, 'delete']);
+
 
 Auth::routes(); 
 
 //homepage
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/search', [RecipeController::class, 'search'])->name('search')->middleware('web');
 
-//logout
-Route::get('logout', [LoginController::class, 'logout'])->name('home');;
+

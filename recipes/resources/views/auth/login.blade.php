@@ -2,13 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card mt-4">
-                <div class="card-header shadow-sm">{{ __('Login') }}</div>
+    <div class="card mt-4 login-card shadow">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+            <div class="row d-flex justify-content-center align-items-center " style="height: 100%;">
+                <div class="col-6 ">
+                    <div class="loginBackground"></div>
+                </div>
+                <div class="col-6 p-3">
+                     <h3 class="py-3 loginHeader" style="font-weight: 700;">{{ __('Login') }}</h3>
+                       <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -65,9 +67,11 @@
                             </div>
                         </div>
                     </form>
+           
                 </div>
+                
             </div>
-        </div>
+     
     </div>
 </div>
 @endsection

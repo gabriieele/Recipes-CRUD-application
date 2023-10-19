@@ -14,6 +14,18 @@ class RecipeController extends Controller
 
         return view('home', ['data' => $data]);
     }
+
+
+ 
+    public function uploadedRecipes()
+    {
+        $user = auth()->user();
+        $recipes = $user->recipes;
+
+        return view('uploadedRecipes', [
+            'recipes'=> $recipes
+        ]);
+    }
    
 
     public function search(Request $request)

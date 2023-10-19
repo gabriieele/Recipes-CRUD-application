@@ -1,9 +1,22 @@
 
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Upload a recipe</li>
+  </ol>
+</nav>
+
+@if(session()->has('error'))
+<div class="mt-3 alert alert-danger" id="message">
+        {{ session()->get('error') }}
+    </div>
+@endif
     <h1 class="my-3">Upload a recipe</h1>
-    <form class="mt-3 addNew" method="POST" enctype="multipart/form-data">
+    <form class="my-3 addNew" method="POST" enctype="multipart/form-data">
       @csrf
     <div class="mb-3">
             <label>Recipe title</label>

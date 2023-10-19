@@ -62,7 +62,7 @@
                             </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('uploadedRecipes') }}">My recipes</a>
+                                    <a class="nav-link" href="{{ route('myRecipes') }}">My recipes</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('newRecipe') }}">Upload a recipe</a>
@@ -76,9 +76,11 @@
             </div>
         </nav>
 </header>
-        <main>
+        <main class="d-flex flex-column min-vh-100">
             @yield('content')
         </main>
+        <footer class="text-center py-3 shadow">@include('layouts.footer')</footer>
+        
     </div>
 </body>
 </html>
