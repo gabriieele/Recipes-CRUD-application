@@ -32,4 +32,9 @@ public function ratings()
 {
     return $this->hasMany(Rating::class);
 }
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
 }

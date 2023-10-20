@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,7 +28,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $recipes = Recipe::all();
+        $recipes = Recipe::with('user')->get();
+ 
 
         return view('home', [
             'categories' => $categories,
