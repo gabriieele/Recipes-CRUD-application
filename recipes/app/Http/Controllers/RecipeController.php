@@ -16,6 +16,15 @@ class RecipeController extends Controller
     }
 
 
+    //show one recipe
+    public function showRecipe(int $id){
+        $data = Recipe::find($id);
+        
+        return view('recipe', [
+            'recipe' => $data
+        ]);
+    }
+
  
     public function uploadedRecipes()
     {

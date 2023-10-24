@@ -28,13 +28,18 @@ use Illuminate\Http\Request;
 //prisijungus
 Route::get('/recipes/new', [PrivateController::class, 'newRecipe'])->name('newRecipe');
 Route::post('/recipes/new', [PrivateController::class, 'saveRecipe'])->name('saveRecipe');
+
+Route::get('/recipes/edit/{id}', [PrivateController::class, 'editRecipe'])->name('edit');
+Route::post('/recipes/edit/{id}', [PrivateController::class, 'saveEdit'])->name('saveEdit');
+
 Route::get('/myrecipes', [RecipeController::class, 'uploadedRecipes'])->name('myRecipes');
-Route::get('/myrecipes/delete/{id}', [PrivateController::class, 'delete'])->name('delete');
+Route::delete('/myrecipes/delete/{id}', [PrivateController::class, 'delete'])->name('delete');
+
+//receptas
+Route::get('recipes/{id}', [RecipeController::class, 'showRecipe'])->name('recipe');
 
 //logout
 Route::get('logout', [LoginController::class, 'logout'])->name('home');
-// Route::get('/recipes/edit/{id}', [RecipeController::class, 'editForm']);
-// Route::post('/recipes/edit/{id}', [RecipeController::class, 'saveEdit']);
 
 
 Auth::routes(); 

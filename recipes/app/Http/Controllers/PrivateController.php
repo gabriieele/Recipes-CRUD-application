@@ -10,7 +10,8 @@ class PrivateController extends Controller
     public function newRecipe(Request $request) {
         $categories = Category::all();
         return view('forms.upload', [
-            'categories' => $categories]);
+            'categories' => $categories
+        ]);
  
     }
 
@@ -33,26 +34,42 @@ class PrivateController extends Controller
 
         return redirect()->route('myRecipes')->with('success', 'Recipe uploaded successfully');
     } catch (\Exception $e) {
-        return redirect()->route('newRecipe')->with('error', 'Failed to upload the recipe');
+        return redirect()->route('newRecipe')->with('error', $e->getMessage());
     }
 }
 
-    public function editForm(int $id) {
-        return view('form');
-    }
+public function editRecipe(int $id) {
+    $recipe = Recipe::find($id);
+    $categories = Category::all();
+    return view('forms.edit', [
+        'recipe' => $recipe, 
+        'categories' => $categories
+    ]);
+}
 
-    public function saveEdit (
-        int $id, 
-        Request $request
-    ) {
+public function saveEdit(Request $request, int $id) {
+    try {
+        $validated = $request->validate([
+            'title' => 'required|min:3|max:200', 
+            'image' => 'max:10000|mimes:jpg,png',
+            'ingredients' => 'required|min:3', 
+            'description' => 'required|min:3', 
+            'category' => 'required|exists:categories,id',
+        ]);
 
-        //Mass Update 
-        try {
-            Recipe::find($id)->update($request->all());
-        } catch(\Exception $e) {
-            //Atvaizduojama žinutė
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('photos', 'public');
         }
+        $validated['category_id'] = $request->input('category');
+        $validated['user_id'] = auth()->user()->id;
+
+        Recipe::find($id)->update($validated);
+
+        return redirect()->route('myRecipes')->with('success', 'Recipe updated successfully');
+    } catch (\Exception $e) {
+        return redirect()->route('edit', ['id' => $id])->with('error', $e->getMessage());
     }
+}
 
     public function delete(int $id) {
         try{

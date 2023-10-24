@@ -10,7 +10,7 @@
                 <div class="container d-flex justify-content-center flex-wrap gap-3">
                     @foreach($recipes as $recipe)
                     <div class="card recipeCard rcard align-items-center shadow-sm mb-3">
-                    <a href="">
+                    <a href="{{ route('recipe', $recipe['id'])}}">
                         <div class="d-flex justify-content-center align-item-center">
                         <img class="recipeImg" src="{{ asset('storage/' . $recipe['image']) }}" alt="recipe"></div>
                     <hr class="mx-2">
