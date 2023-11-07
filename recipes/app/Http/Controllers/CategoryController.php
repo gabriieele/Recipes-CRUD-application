@@ -7,15 +7,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(){
-       
-       
-        foreach(Category::all() as $data){
-            echo '<pre>';
-            echo $data->name;
-        }
-    }
-
     public static function getCategoryIcon($categoryName) {
         switch ($categoryName) {
             case 'Vegetarian':

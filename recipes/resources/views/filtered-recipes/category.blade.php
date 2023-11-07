@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 
@@ -7,16 +6,33 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Search results</li>
+    <li class="breadcrumb-item active" aria-current="page">
+    @if ($category)
+{{$category->name}} 
+        @else
+            All Recipes
+        @endif  
+</li>
   </ol>
 </nav>
-       <h3 class="text-center my-3">Recipes found by {{$keyword}}</h3>
+       <h3 class="text-center my-3">
+       @if ($category)
+            Recipes in {{$category->name}} category
+        @else
+            All Recipes
+        @endif </h3>
+        <div class="d-flex gap-4 my-4 categoriesList">  
+        <a href="{{ route('allRecipes')}}" >All recipes </a>
+          @foreach($categories as $category)
+         <a href="{{ route('category', $category->id) }}" >{{ $category->name }} </a>
+        @endforeach 
+</div>
        @if($recipes->isEmpty())
         <p class="text-center">No recipes found.</p>
     @else
        <div class="row">
             <div class="col-12">
-                <div class="d-flex flex-wrap gap-3">
+                <div class="container d-flex flex-wrap gap-3 p-0">
                 @foreach($recipes as $recipe)
                     <div class="card recipeCard rcard bg-white shadow-sm mb-3">
                     <a href="{{ route('recipe', $recipe->id)}}">
@@ -34,9 +50,7 @@
                 </div>
             </div>
         </div>
-        
 </div>
 @include('pagination.pagination') 
 @endif
-
 @endsection

@@ -2,18 +2,26 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-3">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Reset password</li>
+  </ol>
+</nav>
+    <div class="card mt-3 login-card shadow">
 
-                <div class="card-body">
+<div class="row d-flex justify-content-center align-items-center " style="height: 100%;">
+    <div class="col-6 ">
+        <div class="resetBackground"></div>
+    </div>
+    <div class="col-6 p-3">
+         <h3 class="py-3 loginHeader" style="font-weight: 700;">{{ __('Reset Password') }}</h3>
+         <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
@@ -21,7 +29,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror shadow-sm" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -39,9 +47,11 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
+
     </div>
+    
+</div>
+
+</div>
 </div>
 @endsection

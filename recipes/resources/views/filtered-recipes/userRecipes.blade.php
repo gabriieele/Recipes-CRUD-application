@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content')
 
@@ -7,16 +6,21 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Search results</li>
+    <li class="breadcrumb-item active" aria-current="page">
+
+Recipes by {{$user->name}} user
+
+
+</li>
   </ol>
 </nav>
-       <h3 class="text-center my-3">Recipes found by {{$keyword}}</h3>
-       @if($recipes->isEmpty())
-        <p class="text-center">No recipes found.</p>
-    @else
+       <h3 class="text-center my-3">
+            Recipes uploaded by user {{$user->name}} 
+        
+       </h3>
        <div class="row">
             <div class="col-12">
-                <div class="d-flex flex-wrap gap-3">
+                <div class="container d-flex flex-wrap gap-3 p-0">
                 @foreach($recipes as $recipe)
                     <div class="card recipeCard rcard bg-white shadow-sm mb-3">
                     <a href="{{ route('recipe', $recipe->id)}}">
@@ -34,9 +38,5 @@
                 </div>
             </div>
         </div>
-        
 </div>
-@include('pagination.pagination') 
-@endif
-
 @endsection

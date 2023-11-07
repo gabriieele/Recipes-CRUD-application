@@ -11,7 +11,7 @@
     </div>
     </section>
 @include('homepage.section2')  
-@include('homepage.recipes') 
+@include('homepage.section3') 
 @endsection
 
 

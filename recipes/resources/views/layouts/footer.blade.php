@@ -3,9 +3,8 @@
                 <div class="col-12">
                     <ul class="list-inline mt-2">
                         <li class="list-inline-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="list-inline-item"><a href="#">All recipes</a></li>
-                        <li class="list-inline-item"><a href="#">About us</a></li>
-                        <li class="list-inline-item"><a href="#">Contact</a></li>
+                        <li class="list-inline-item"><a href="{{ route('allRecipes') }}">All recipes</a></li>
+                        <li class="list-inline-item"><a href="{{ route('aboutUs') }}">About</a></li>
                     </ul>
                 </div></div>
 

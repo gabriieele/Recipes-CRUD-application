@@ -28,8 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $recipes = Recipe::with('user')->get();
- 
+        $recipes = Recipe::orderBy('created_at', 'desc')->paginate(12);
 
         return view('home', [
             'categories' => $categories,

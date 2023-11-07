@@ -22,30 +22,47 @@ use Illuminate\Http\Request;
 //
 
 
-// Route::get('/recipes',[RecipeController::class, 'index']);
-// Route::get('/categories',[CategoryController::class, 'index']);
 
 //prisijungus
 Route::get('/recipes/new', [PrivateController::class, 'newRecipe'])->name('newRecipe');
 Route::post('/recipes/new', [PrivateController::class, 'saveRecipe'])->name('saveRecipe');
 
+//edit
 Route::get('/recipes/edit/{id}', [PrivateController::class, 'editRecipe'])->name('edit');
-Route::post('/recipes/edit/{id}', [PrivateController::class, 'saveEdit'])->name('saveEdit');
+Route::put('/recipes/edit/{id}', [PrivateController::class, 'saveEdit'])->name('saveEdit');
 
+//delete
 Route::get('/myrecipes', [RecipeController::class, 'uploadedRecipes'])->name('myRecipes');
 Route::delete('/myrecipes/delete/{id}', [PrivateController::class, 'delete'])->name('delete');
 
 //receptas
-Route::get('recipes/{id}', [RecipeController::class, 'showRecipe'])->name('recipe');
+Route::get('/recipes/{id}', [RecipeController::class, 'showRecipe'])->name('recipe');
+Route::post('/recipes/comment/{id}', [CommentController::class, 'index'])->name('comment');
+Route::delete('/recipes/comment/delete/{id}', [CommentController::class, 'delete'])->name('deleteComment');
+Route::get('/recipes/comment/edit/{id}', [CommentController::class, 'showEdit'])->name('showEdit');
+Route::post('/recipes/comment/edit/{id}', [CommentController::class, 'edit'])->name('editComment');
+
+
+Route::post('/recipes/rating/{id}', [RatingController::class, 'index'])->name('ratings');
+
+
+//category
+Route::get('category/{id}', [RecipeController::class, 'recipeByCategory'])->name('category');
+Route::get('/category', [RecipeController::class, 'allRecipes'])->name('allRecipes');
+
+Route::get('/recipes/user/{id}', [RecipeController::class, 'recipeByUser'])->name('userRecipes');
 
 //logout
 Route::get('logout', [LoginController::class, 'logout'])->name('home');
-
 
 Auth::routes(); 
 
 //homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/search', [RecipeController::class, 'search'])->name('search')->middleware('web');
+Route::get('/search', [RecipeController::class, 'search'])->name('search');
+
+Route::get('/aboutus', function () {
+    return view('aboutUs');
+})->name('aboutUs');
 
 

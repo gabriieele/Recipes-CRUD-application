@@ -10,36 +10,48 @@
   </ol>
 </nav>
 
-@if(session()->has('error'))
-<div class="mt-3 alert alert-danger" id="message">
-        {{ session()->get('error') }}
+@if (session()->has('success'))
+    <div class="mt-3 alert alert-success shadow-sm" id="message">
+        {{ session()->get('success') }}
     </div>
 @endif
     <h1 class="my-3">Update a recipe</h1>
     <form class="my-3 addNew" method="POST" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
     <div class="mb-3">
             <label>Recipe title</label>
-            <input type="text" name="title" class="form-control" value="{{ $recipe->title }}">
+            <input type="text" name="title" class="form-control shadow-sm @error('title') is-invalid @enderror" value="{{ $recipe->title }}">
+            @error('title')
+             <span class="error text-danger">{{$message}}</span>
+            @enderror
         </div>
         <div class="mb-3">
             <label>Ingredients:</label>
-            <textarea class="form-control" placeholder="Enter ingredients" name="ingredients" rows="7">{{ $recipe->ingredients }}</textarea>
+            <textarea class="form-control shadow-sm @error('ingredients') is-invalid @enderror" placeholder="Enter ingredients" name="ingredients" rows="7">{{ $recipe->ingredients }}</textarea>
+            @error('ingredients')
+             <span class="error text-danger">{{$message}}</span>
+            @enderror
         </div>
         <div class="mb-3">
             <label>Description:</label>
-            <textarea class="form-control" placeholder="Enter description" name="description" rows="7">{{ $recipe->description }}</textarea>
+            <textarea class="form-control shadow-sm @error('description') is-invalid @enderror" placeholder="Enter description" name="description" rows="7">{{ $recipe->description }}</textarea>
+            @error('description')
+             <span class="error text-danger">{{$message}}</span>
+            @enderror
         </div>
         <div class="mb-3">
             <label>Category:</label>
-            <select class="form-select" name="category">
+            <select class="form-select shadow-sm @error('category') is-invalid @enderror" name="category">
             <option selected value="{{ $recipe->category_id }}">{{ $recipe->category->name }}</option>
                 @foreach($categories as $category)
                 <option value="{{$category['id']}}">{{$category['name']}}</option>
                 @endforeach
             </select>
+            @error('category')
+             <span class="error text-danger">{{$message}}</span>
+            @enderror
 
-            
         </div>
        
         <div class="mb-3">

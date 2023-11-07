@@ -10,19 +10,26 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
+
 footer {
     margin-top: auto;
 }
+
 li {
     text-transform: none;
 }
 .search input {
     border-top-left-radius: 80px !important;
     border-bottom-left-radius: 80px !important;
+    border: 1px solid #eaeaea !important;
 }
 .search-btn {
     border-top-right-radius: 80px !important;
@@ -47,7 +54,7 @@ li {
 }
 
 .section2 {
-    padding: 100px 0;
+    padding: 80px 0 50px;
     background-color: #f8f9fa;
 }
 .section3 {
@@ -58,8 +65,7 @@ li {
 .categoryCard {
     height: 200px;
     width: 200px;
-    margin-right: 10px;
-    background-color: #dfd1bf;
+    background-color: rgb(208, 189, 163);
     border: 1px solid #dee2e6;
 }
 
@@ -95,6 +101,10 @@ img {
     background-color: rgb(68, 68, 68);
 }
 
+.btn-primary:active {
+    background-color: rgb(68, 68, 68);
+}
+
 .recipeCard {
     border: 1px solid #eaeaea;
 }
@@ -104,7 +114,7 @@ a {
 }
 
 footer {
-    background-color: #dfd1bf;
+    background-color: rgb(208, 189, 163);
 }
 
 footer p,
@@ -130,7 +140,8 @@ footer a {
 }
 
 .loginBackground,
-.registerBackground {
+.registerBackground,
+.resetBackground {
     background: url("breakfast.jpg") no-repeat center/cover;
     height: 500px;
     width: 100%;
@@ -142,6 +153,10 @@ footer a {
     background: url("registerPic.jpg") no-repeat center/cover;
 }
 
+.resetBackground {
+    background: url("reset.jpg") no-repeat center/cover;
+}
+
 .loginHeader {
     margin-left: 100px;
 }
@@ -151,5 +166,217 @@ footer a {
 }
 
 .recipeCard a {
+    color: #a0978a;
+    text-decoration: underline;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination li a {
     color: rgb(28, 28, 28);
+    border-radius: 5px;
+}
+.active .page-link {
+    background-color: white;
+    border-color: rgb(208, 189, 163);
+    color: #a0978a;
+}
+
+.page-link {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px !important;
+}
+
+.pagination li a:hover {
+    color: #a0978a;
+}
+.owl-theme.owl-theme .owl-dots .owl-dot span {
+    margin-top: 20px;
+}
+
+.owl-dot.active {
+    background: #a0978a;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating .fa,
+.rating .fas {
+    font-size: 18px;
+    padding: 5px;
+}
+
+.rating label {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating input:checked ~ label {
+    color: #ffdb58;
+}
+
+.rating label:hover,
+//visos zvaigzdutes is paskos hoverinsis
+.rating label:hover ~ label {
+    color: #ffdb58;
+}
+
+.ratingButton {
+    font-size: 10px;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+.categoriesList a {
+    color: rgb(28, 28, 28);
+}
+
+.form-control.is-invalid {
+    border-color: red;
+}
+
+.commentButton {
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+}
+
+.delBtn {
+    color: red;
+}
+
+.editBtn {
+    color: rgb(250, 169, 70);
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.alert,
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+input,
+textarea {
+    border-radius: 10px !important;
+    border: 1px solid #dddee0 !important;
+}
+.container {
+    flex-grow: 1;
+}
+
+.aboutCard {
+    background-color: #f8f9fa;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .categoryCard {
+        width: 80px;
+        height: 80px;
+        font-size: 10px;
+    }
+    .rcard {
+        width: 100px;
+    }
+    .recipeImg {
+        height: 100px;
+        width: 100px;
+        padding: 10px;
+        margin: 0;
+    }
+    .fa,
+    .fas {
+        font-size: 20px;
+    }
+    .search {
+        width: 50%;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .section1 {
+        padding: 150px 0;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    .categoryCard {
+        width: 120px;
+        height: 120px;
+        font-size: 12px;
+    }
+    .fa,
+    .fas {
+        font-size: 20px;
+    }
+    .search {
+        width: 50%;
+    }
+    .section1 {
+        padding: 150px 0;
+    }
+
+    .recipeCard h6 {
+        font-size: 12px;
+    }
+    .rcard {
+        width: 100px;
+    }
+    .recipeImg {
+        height: 100px;
+        width: 100px;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .btn {
+        width: 20px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 768px) {
+    .categoryCard {
+        width: 150px;
+        height: 150px;
+    }
+    .fa,
+    .fas {
+        font-size: 25px;
+    }
+    .search {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 900px) {
+    .categoryCard {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1400px) {
+    .categoryCard {
+        width: 150px;
+        height: 150px;
+    }
 }

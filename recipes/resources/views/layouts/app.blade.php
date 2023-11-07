@@ -22,9 +22,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class=" container nav-cont justify-content-center">
                 <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-                <form class="d-flex input-group search m-0" role="search" method="POST" action="{{ route('search') }}">
-                @csrf
-      <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search" >
+                <form class="d-flex input-group search m-0" role="search" method="GET" action="{{ route('search') }}">
+                
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q" >
       <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
     </form>
                     <!-- Right Side Of Navbar -->

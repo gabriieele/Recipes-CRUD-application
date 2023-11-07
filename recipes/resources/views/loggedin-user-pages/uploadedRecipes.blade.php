@@ -32,11 +32,11 @@
     <h1 class="my-3">My recipes</h1>
 
     @if(session()->has('success'))
-        <div class=" mt-3 alert alert-success" id="message">
+        <div class=" mt-3 alert alert-success shadow-sm" id="message">
             {{ session()->get('success') }}
         </div>
     @elseif(session()->has('error'))
-        <div class=" mt-3 alert alert-danger" id="message">
+        <div class=" mt-3 alert alert-danger shadow-sm" id="message">
             {{ session()->get('error') }}
         </div>
     @endif
@@ -45,18 +45,19 @@
         <div class="card recipeCard bg-white shadow-sm mb-3">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <a href=""><img class="recipeImg p-3" src="{{ asset('storage/' . $recipe['image']) }}" alt="recipe"></a>
+                    <a href="{{ route('recipe', $recipe->id)}}"><img class="recipeImg p-3" src="{{ asset('storage/' . $recipe['image']) }}" alt="recipe"></a>
                 </div>
                 <div class="col-8">
                     <h4 class="pt-3">{{$recipe['title']}}</h4>
-                    <p>{{ Str::words($recipe['description'], 50, '...') }}</p>
+                    <p class="text-sm overflow-hidden">{{ Str::words($recipe['description'], 50, '...') }}</p>
                 </div>
                 <div class="col-2">
                     <a href="{{ route('edit', $recipe['id']) }}"> <button class="btn btn-primary">Edit</button> </a>
-                    <button class="btn btn-danger del-recipe" data-url="{{ route('delete', $recipe['id']) }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
+                    <button class="btn btn-danger del" data-url="{{ route('delete', $recipe->id) }}" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
                 </div>
             </div>
         </div>
     @endforeach
 </div>
+@include('pagination.pagination') 
 @endsection
